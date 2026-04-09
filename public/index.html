@@ -7,28 +7,142 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💜</text></svg>">
 </head>
 <body>
 
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="logo">REM<span>-MOM</span></div>
+      <div class="nav-links">
+        <a href="https://github.com/levanstein/remom" target="_blank">GitHub</a>
+        <a href="https://hacks.elevenlabs.io/hackathons/2" target="_blank" class="nav-badge">ElevenHacks #3</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <div class="hero-badge">Built for ElevenHacks #3</div>
-      <h1>Your voice.<br><span class="gradient-text">Their comfort.</span></h1>
-      <p class="hero-sub">Clone your voice to stay close to parents with dementia. Medication reminders, daily check-ins, and memory exercises... in the voice they know best.</p>
-
-      <div class="video-wrapper" id="video-wrapper">
-        <video controls preload="metadata" poster="">
-          <source src="demo.mp4" type="video/mp4">
-        </video>
+      <div class="hero-pills">
+        <span class="pill">Voice Cloning</span>
+        <span class="pill">Dementia Care</span>
+        <span class="pill">AI-Powered</span>
       </div>
-
-      <div class="footer-line">
-        <span>Built with ElevenLabs Voice Cloning</span>
-        <span class="dot"></span>
-        <a href="https://github.com/levanstein/remom" target="_blank">GitHub</a>
+      <h1>Your voice.<br>Their comfort.</h1>
+      <p class="hero-sub">Clone your voice to stay close to parents with dementia. Medication reminders, daily check-ins, and memory exercises in the voice they know best.</p>
+      <div class="hero-logos">
+        <span class="powered-by">Powered by</span>
+        <svg class="logo-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <span class="logo-text">ElevenLabs</span>
+        <span class="logo-sep">+</span>
+        <span class="logo-text">Replit</span>
       </div>
     </div>
   </section>
+
+  <!-- VIDEO -->
+  <section class="video-section">
+    <div class="container">
+      <div class="video-card">
+        <video controls preload="metadata">
+          <source src="demo.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-num">55M+</div>
+          <div class="stat-label">people live with dementia worldwide</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">#1</div>
+          <div class="stat-label">familiar voices are the last memory to fade</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">30s</div>
+          <div class="stat-label">to clone your voice and start caring</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how">
+    <div class="container">
+      <h2>How it works</h2>
+      <div class="steps">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <h3>Record your voice</h3>
+          <p>30 seconds is all it takes. Read a few sentences and our AI learns the unique patterns of your voice.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <h3>Choose what to say</h3>
+          <p>Medication reminders, morning check-ins, or memory exercises. Or write your own personal message.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <h3>Mom hears you</h3>
+          <p>Your cloned voice speaks the words. Not a robot. Not a stranger. You. Every single day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION -->
+  <section class="vision">
+    <div class="container">
+      <h2>What's next</h2>
+      <div class="vision-grid">
+        <div class="vision-item">
+          <div class="vision-icon">&#9742;</div>
+          <h3>Real phone calls</h3>
+          <p>Scheduled outbound calls to your parent's phone at the time you choose.</p>
+        </div>
+        <div class="vision-item">
+          <div class="vision-icon">&#9997;</div>
+          <h3>Memory journal</h3>
+          <p>Track conversations and cognitive patterns over time.</p>
+        </div>
+        <div class="vision-item">
+          <div class="vision-icon">&#9829;</div>
+          <h3>Family voices</h3>
+          <p>Grandkids, siblings, old friends. A chorus of familiar voices.</p>
+        </div>
+        <div class="vision-item">
+          <div class="vision-icon">&#9881;</div>
+          <h3>Caregiver dashboard</h3>
+          <p>Real-time insights on engagement and medication adherence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <div class="logo">REM<span>-MOM</span></div>
+        <p>Your voice. Their comfort.</p>
+      </div>
+      <div class="footer-right">
+        <p>Built for ElevenHacks Hack #3 &middot; April 2026</p>
+        <div class="footer-links">
+          <a href="https://github.com/levanstein/remom" target="_blank">GitHub</a>
+          <a href="https://elevenlabs.io" target="_blank">ElevenLabs</a>
+          <a href="https://replit.com" target="_blank">Replit</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
