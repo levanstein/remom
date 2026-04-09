@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REM-MOM — Your Voice. Their Comfort.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">Built for ElevenHacks #3</div>
+      <h1>Your voice.<br><span class="gradient-text">Their comfort.</span></h1>
+      <p class="hero-sub">Clone your voice to stay close to parents with dementia. Medication reminders, daily check-ins, and memory exercises... in the voice they know best.</p>
+      <a href="#demo" class="cta-btn">Try it now</a>
+      <div class="hero-stats">
+        <div class="stat"><strong>55M+</strong><span>people live with dementia worldwide</span></div>
+        <div class="stat"><strong>#1</strong><span>familiar voices are the last to fade</span></div>
+        <div class="stat"><strong>30s</strong><span>to clone your voice</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="problem">
+    <div class="container">
+      <h2>The hardest part of dementia isn't forgetting.<br>It's feeling forgotten.</h2>
+      <p>Your mom may not remember what day it is. But she remembers <em>your voice</em>. The sound of her child is encoded in the deepest layers of memory, the kind that dementia takes last.</p>
+      <p>Medication reminder apps use cold, robotic voices. Your mom doesn't need a robot. She needs <strong>you</strong>.</p>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works">
+    <div class="container">
+      <h2>How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-icon">🎤</div>
+          <h3>Record your voice</h3>
+          <p>30 seconds is all it takes. Read a few sentences and our AI learns the unique patterns of your voice.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-icon">💬</div>
+          <h3>Choose what to say</h3>
+          <p>Pick from medication reminders, morning check-ins, or memory exercises. Or write your own message.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-icon">💜</div>
+          <h3>Mom hears you</h3>
+          <p>Your cloned voice speaks the words. Not a robot. Not a stranger. You. Every single day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE DEMO -->
+  <section class="demo" id="demo">
+    <div class="container">
+      <h2>Try it yourself</h2>
+      <p class="demo-sub">Upload or record your voice, then hear your clone speak a message for your loved one.</p>
+
+      <div class="demo-card">
+        <!-- Step 1: Voice Input -->
+        <div class="demo-step" id="step-voice">
+          <h3><span class="step-badge">Step 1</span> Your voice sample</h3>
+          <p class="demo-hint">Record at least 30 seconds. Read the text below naturally, like you're talking to your mom.</p>
+
+          <div class="sample-text">
+            "Hey Mom, I just wanted to call and check in on you. I hope you're having a good day today. Did you eat breakfast this morning? I was thinking about that time we went to the park together and fed the ducks. You always loved that. I'll come visit you soon, I promise. Don't forget to take your medication. I love you so much."
+          </div>
+
+          <div class="voice-controls">
+            <button class="btn btn-record" id="btn-record">
+              <span class="rec-dot"></span> Record your voice
+            </button>
+            <div class="recording-indicator" id="recording-indicator">
+              <div class="rec-pulse"></div>
+              <span id="rec-timer">0:00</span>
+              <button class="btn btn-stop" id="btn-stop">Stop</button>
+            </div>
+            <div class="divider-or">or</div>
+            <label class="btn btn-upload">
+              Upload audio file
+              <input type="file" id="file-upload" accept="audio/*" hidden>
+            </label>
+          </div>
+
+          <div class="audio-preview" id="audio-preview" style="display:none">
+            <audio id="preview-player" controls></audio>
+            <button class="btn btn-clone" id="btn-clone">Clone my voice</button>
+          </div>
+
+          <div class="clone-loading" id="clone-loading" style="display:none">
+            <div class="spinner"></div>
+            <p>Cloning your voice... this takes 10-30 seconds</p>
+          </div>
+
+          <div class="clone-success" id="clone-success" style="display:none">
+            <div class="check-mark">✓</div>
+            <p>Voice cloned successfully!</p>
+          </div>
+        </div>
+
+        <!-- Step 2: Message -->
+        <div class="demo-step" id="step-message" style="display:none">
+          <h3><span class="step-badge">Step 2</span> What should you say to Mom?</h3>
+
+          <div class="scenarios">
+            <button class="scenario-btn active" data-text="Mom, it's time for your evening medication. Remember the blue pills on the kitchen counter. Take them with a glass of water, okay? I love you.">
+              💊 Medication reminder
+            </button>
+            <button class="scenario-btn" data-text="Hey Mom, good morning! How did you sleep? I hope you have a wonderful day today. Don't forget to eat breakfast. I'm thinking of you.">
+              ☀️ Morning check-in
+            </button>
+            <button class="scenario-btn" data-text="Mom, do you remember our trip to the seaside when I was little? You held my hand and we walked along the beach collecting shells. Tell me what you remember about that day.">
+              🧠 Memory exercise
+            </button>
+            <button class="scenario-btn" data-text="">
+              ✍️ Custom message
+            </button>
+          </div>
+
+          <textarea class="message-input" id="message-input" placeholder="Type your message here..." rows="3">Mom, it's time for your evening medication. Remember the blue pills on the kitchen counter. Take them with a glass of water, okay? I love you.</textarea>
+
+          <button class="btn btn-generate" id="btn-generate">
+            Generate voice message
+          </button>
+
+          <div class="generate-loading" id="generate-loading" style="display:none">
+            <div class="spinner"></div>
+            <p>Generating your voice message...</p>
+          </div>
+
+          <div class="result-audio" id="result-audio" style="display:none">
+            <p class="result-label">Here's what Mom would hear:</p>
+            <audio id="result-player" controls></audio>
+            <button class="btn btn-try-another" id="btn-try-another">Try another message</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION -->
+  <section class="vision">
+    <div class="container">
+      <h2>The future of REM-MOM</h2>
+      <p class="vision-sub">What we're building next.</p>
+      <div class="vision-grid">
+        <div class="vision-card">
+          <div class="vision-icon">📞</div>
+          <h3>Real phone calls</h3>
+          <p>Scheduled outbound calls to your parent's phone. Your cloned voice, calling every day at the time you choose.</p>
+        </div>
+        <div class="vision-card">
+          <div class="vision-icon">📔</div>
+          <h3>Memory journal</h3>
+          <p>Track conversations and cognitive patterns over time. See how your parent responds to different memory prompts.</p>
+        </div>
+        <div class="vision-card">
+          <div class="vision-icon">👨‍👩‍👧‍👦</div>
+          <h3>Family voices</h3>
+          <p>Not just your voice. Grandkids, siblings, old friends. A chorus of familiar voices in your parent's daily life.</p>
+        </div>
+        <div class="vision-card">
+          <div class="vision-icon">👩‍⚕️</div>
+          <h3>Caregiver dashboard</h3>
+          <p>Doctors and caregivers get real-time insights on engagement, alertness, and medication adherence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <section class="footer">
+    <div class="container">
+      <p class="footer-built">Built with ❤️ using <a href="https://elevenlabs.io" target="_blank">ElevenLabs</a> and <a href="https://replit.com" target="_blank">Replit</a></p>
+      <p class="footer-hackathon">ElevenHacks Hack #3 · April 2026</p>
+      <div class="footer-links">
+        <a href="https://github.com/levanstein/remom" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
