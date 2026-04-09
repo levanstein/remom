@@ -5,144 +5,229 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>REM-MOM — Your Voice. Their Comfort.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💜</text></svg>">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #000;
+      --fg: #ededed;
+      --accents-1: #111;
+      --accents-2: #333;
+      --accents-3: #444;
+      --accents-4: #666;
+      --accents-5: #888;
+      --accents-6: #999;
+      --accents-7: #eaeaea;
+      --accents-8: #fafafa;
+      --geist-foreground: #fff;
+      --geist-background: #000;
+      --ds-gray-100: #1a1a1a;
+      --ds-gray-200: #1f1f1f;
+      --ds-gray-400: #454545;
+      --ds-gray-600: #7a7a7a;
+      --ds-gray-900: #ededed;
+      --ds-gray-1000: #fafafa;
+      --ds-blue-900: #52a8ff;
+      --border: rgba(255,255,255,0.08);
+      --radius: 8px;
+    }
+    body {
+      font-family: 'Inter', -apple-system, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    .mono { font-family: 'Geist Mono', monospace; }
+
+    /* NAV */
+    .nav { border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(0,0,0,0.8); backdrop-filter: saturate(180%) blur(20px); z-index: 100; }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-size: 1rem; font-weight: 700; letter-spacing: -0.02em; display: flex; align-items: center; gap: 8px; }
+    .nav-logo .slash { color: var(--accents-3); font-weight: 400; margin: 0 4px; }
+    .nav-logo .project { color: var(--accents-5); font-weight: 400; }
+    .nav-right { display: flex; align-items: center; gap: 24px; }
+    .nav-right a { color: var(--accents-5); text-decoration: none; font-size: 0.875rem; transition: color 0.15s; }
+    .nav-right a:hover { color: var(--fg); }
+    .nav-btn { background: #fff; color: #000; padding: 6px 12px; border-radius: 6px; font-size: 0.8125rem; font-weight: 500; text-decoration: none; transition: background 0.15s; }
+    .nav-btn:hover { background: #ccc; color: #000 !important; }
+
+    /* HERO */
+    .hero { max-width: 1100px; margin: 0 auto; padding: 80px 24px 0; text-align: center; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px 4px 8px; border: 1px solid var(--border); border-radius: 50px; font-size: 0.8125rem; color: var(--accents-5); margin-bottom: 32px; }
+    .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: #52a8ff; }
+    .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; letter-spacing: -0.06em; line-height: 1.05; margin-bottom: 16px; color: var(--ds-gray-1000); }
+    .hero p { font-size: 1rem; color: var(--accents-5); max-width: 500px; margin: 0 auto 40px; line-height: 1.6; letter-spacing: -0.01em; }
+    .hero-powered { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 64px; }
+    .hero-powered span { font-size: 0.8125rem; color: var(--accents-4); }
+    .hero-powered .brand { font-size: 0.875rem; color: var(--accents-6); font-weight: 500; }
+
+    /* VIDEO */
+    .video-wrap { max-width: 1000px; margin: 0 auto 0; padding: 0 24px; }
+    .video-frame { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--ds-gray-100); }
+    .video-frame video { width: 100%; display: block; }
+
+    /* GRADIENT LINE */
+    .gradient-line { height: 1px; max-width: 1100px; margin: 80px auto; background: linear-gradient(90deg, transparent, var(--accents-2), transparent); }
+
+    /* STATS */
+    .stats { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .stat-cell { padding: 40px 32px; text-align: center; }
+    .stat-cell:not(:last-child) { border-right: 1px solid var(--border); }
+    .stat-num { font-size: 3rem; font-weight: 800; letter-spacing: -0.05em; color: var(--ds-gray-1000); }
+    .stat-label { font-size: 0.8125rem; color: var(--accents-5); margin-top: 4px; letter-spacing: -0.01em; }
+
+    /* STEPS */
+    .section { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .section-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 24px; }
+    .section-head h2 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.03em; }
+    .section-head .tag { font-size: 0.75rem; color: var(--accents-4); padding: 2px 8px; border: 1px solid var(--border); border-radius: 50px; }
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .step-cell { background: var(--bg); padding: 32px 28px; }
+    .step-n { font-family: 'Geist Mono', monospace; font-size: 0.75rem; color: var(--accents-4); margin-bottom: 16px; }
+    .step-cell h3 { font-size: 0.9375rem; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.02em; }
+    .step-cell p { font-size: 0.8125rem; color: var(--accents-5); line-height: 1.6; }
+
+    /* VISION */
+    .vision-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .v-cell { background: var(--bg); padding: 28px 24px; }
+    .v-cell h3 { font-size: 0.875rem; font-weight: 600; margin-bottom: 6px; letter-spacing: -0.02em; }
+    .v-cell p { font-size: 0.8125rem; color: var(--accents-5); line-height: 1.5; }
+
+    /* FOOTER */
+    .footer { max-width: 1100px; margin: 0 auto; padding: 32px 24px; border-top: 1px solid var(--border); margin-top: 80px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-l { font-size: 0.8125rem; color: var(--accents-4); }
+    .footer-r { display: flex; gap: 20px; }
+    .footer-r a { font-size: 0.8125rem; color: var(--accents-5); text-decoration: none; }
+    .footer-r a:hover { color: var(--fg); }
+
+    @media (max-width: 700px) {
+      .stats-grid { grid-template-columns: 1fr; }
+      .stat-cell:not(:last-child) { border-right: none; border-bottom: 1px solid var(--border); }
+      .steps-grid { grid-template-columns: 1fr; }
+      .vision-grid { grid-template-columns: 1fr 1fr; }
+      .footer { flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="nav">
-    <div class="container nav-inner">
-      <div class="logo">REM<span>-MOM</span></div>
-      <div class="nav-links">
-        <a href="https://github.com/levanstein/remom" target="_blank">GitHub</a>
-        <a href="https://hacks.elevenlabs.io/hackathons/2" target="_blank" class="nav-badge">ElevenHacks #3</a>
-      </div>
+<div class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+      <span>REM-MOM</span>
     </div>
-  </nav>
+    <div class="nav-right">
+      <a href="https://github.com/levanstein/remom" target="_blank">GitHub</a>
+      <a href="https://hacks.elevenlabs.io/hackathons/2" target="_blank">ElevenHacks</a>
+      <a href="https://elevenlabs.io" target="_blank" class="nav-btn">ElevenLabs</a>
+    </div>
+  </div>
+</div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-pills">
-        <span class="pill">Voice Cloning</span>
-        <span class="pill">Dementia Care</span>
-        <span class="pill">AI-Powered</span>
-      </div>
-      <h1>Your voice.<br>Their comfort.</h1>
-      <p class="hero-sub">Clone your voice to stay close to parents with dementia. Medication reminders, daily check-ins, and memory exercises in the voice they know best.</p>
-      <div class="hero-logos">
-        <span class="powered-by">Powered by</span>
-        <svg class="logo-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        <span class="logo-text">ElevenLabs</span>
-        <span class="logo-sep">+</span>
-        <span class="logo-text">Replit</span>
-      </div>
-    </div>
-  </section>
+<section class="hero">
+  <div class="hero-badge"><span class="dot"></span> Built for ElevenHacks #3</div>
+  <h1>Your voice.<br>Their comfort.</h1>
+  <p>Clone your voice to stay close to parents with dementia. Medication reminders, check-ins, and memory exercises in the voice they know best.</p>
+  <div class="hero-powered">
+    <span>Powered by</span>
+    <span class="brand">ElevenLabs</span>
+    <span style="color: var(--accents-3);">/</span>
+    <span class="brand">Replit</span>
+  </div>
+</section>
 
-  <!-- VIDEO -->
-  <section class="video-section">
-    <div class="container">
-      <div class="video-card">
-        <video controls preload="metadata">
-          <source src="demo.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
-  </section>
+<div class="video-wrap">
+  <div class="video-frame">
+    <video controls preload="metadata">
+      <source src="demo.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
 
-  <!-- STATS -->
-  <section class="stats">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat-item">
-          <div class="stat-num">55M+</div>
-          <div class="stat-label">people live with dementia worldwide</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">#1</div>
-          <div class="stat-label">familiar voices are the last memory to fade</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">30s</div>
-          <div class="stat-label">to clone your voice and start caring</div>
-        </div>
-      </div>
-    </div>
-  </section>
+<div class="gradient-line"></div>
 
-  <!-- HOW IT WORKS -->
-  <section class="how">
-    <div class="container">
-      <h2>How it works</h2>
-      <div class="steps">
-        <div class="step-card">
-          <div class="step-num">01</div>
-          <h3>Record your voice</h3>
-          <p>30 seconds is all it takes. Read a few sentences and our AI learns the unique patterns of your voice.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-num">02</div>
-          <h3>Choose what to say</h3>
-          <p>Medication reminders, morning check-ins, or memory exercises. Or write your own personal message.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-num">03</div>
-          <h3>Mom hears you</h3>
-          <p>Your cloned voice speaks the words. Not a robot. Not a stranger. You. Every single day.</p>
-        </div>
-      </div>
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat-cell">
+      <div class="stat-num">55M+</div>
+      <div class="stat-label">people live with dementia worldwide</div>
     </div>
-  </section>
+    <div class="stat-cell">
+      <div class="stat-num">#1</div>
+      <div class="stat-label">familiar voices are the last to fade</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">30s</div>
+      <div class="stat-label">to clone your voice</div>
+    </div>
+  </div>
+</div>
 
-  <!-- VISION -->
-  <section class="vision">
-    <div class="container">
-      <h2>What's next</h2>
-      <div class="vision-grid">
-        <div class="vision-item">
-          <div class="vision-icon">&#9742;</div>
-          <h3>Real phone calls</h3>
-          <p>Scheduled outbound calls to your parent's phone at the time you choose.</p>
-        </div>
-        <div class="vision-item">
-          <div class="vision-icon">&#9997;</div>
-          <h3>Memory journal</h3>
-          <p>Track conversations and cognitive patterns over time.</p>
-        </div>
-        <div class="vision-item">
-          <div class="vision-icon">&#9829;</div>
-          <h3>Family voices</h3>
-          <p>Grandkids, siblings, old friends. A chorus of familiar voices.</p>
-        </div>
-        <div class="vision-item">
-          <div class="vision-icon">&#9881;</div>
-          <h3>Caregiver dashboard</h3>
-          <p>Real-time insights on engagement and medication adherence.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<div class="gradient-line"></div>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-left">
-        <div class="logo">REM<span>-MOM</span></div>
-        <p>Your voice. Their comfort.</p>
-      </div>
-      <div class="footer-right">
-        <p>Built for ElevenHacks Hack #3 &middot; April 2026</p>
-        <div class="footer-links">
-          <a href="https://github.com/levanstein/remom" target="_blank">GitHub</a>
-          <a href="https://elevenlabs.io" target="_blank">ElevenLabs</a>
-          <a href="https://replit.com" target="_blank">Replit</a>
-        </div>
-      </div>
+<div class="section">
+  <div class="section-head">
+    <h2>How it works</h2>
+    <span class="tag mono">3 steps</span>
+  </div>
+  <div class="steps-grid">
+    <div class="step-cell">
+      <div class="step-n mono">01</div>
+      <h3>Record your voice</h3>
+      <p>30 seconds of natural speech. AI learns the unique patterns of your voice from a short sample.</p>
     </div>
-  </footer>
+    <div class="step-cell">
+      <div class="step-n mono">02</div>
+      <h3>Choose a message</h3>
+      <p>Medication reminders, morning check-ins, or memory exercises. Or write your own personal message.</p>
+    </div>
+    <div class="step-cell">
+      <div class="step-n mono">03</div>
+      <h3>Mom hears you</h3>
+      <p>Your cloned voice speaks the words. Not a robot. Not a stranger. You. Every single day.</p>
+    </div>
+  </div>
+</div>
+
+<div class="gradient-line"></div>
+
+<div class="section">
+  <div class="section-head">
+    <h2>What's next</h2>
+    <span class="tag mono">roadmap</span>
+  </div>
+  <div class="vision-grid">
+    <div class="v-cell">
+      <h3>Real phone calls</h3>
+      <p>Scheduled outbound calls to your parent's phone at the time you choose.</p>
+    </div>
+    <div class="v-cell">
+      <h3>Memory journal</h3>
+      <p>Track conversations and cognitive patterns over time.</p>
+    </div>
+    <div class="v-cell">
+      <h3>Family voices</h3>
+      <p>Grandkids, siblings, old friends. A chorus of familiar voices.</p>
+    </div>
+    <div class="v-cell">
+      <h3>Caregiver view</h3>
+      <p>Real-time insights on engagement and medication adherence.</p>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-l">REM-MOM &middot; ElevenHacks #3 &middot; April 2026</div>
+  <div class="footer-r">
+    <a href="https://github.com/levanstein/remom" target="_blank">GitHub</a>
+    <a href="https://elevenlabs.io" target="_blank">ElevenLabs</a>
+    <a href="https://replit.com" target="_blank">Replit</a>
+  </div>
+</footer>
 
 </body>
 </html>
